@@ -66,8 +66,8 @@ class YamboOut():
         # get output filenames
         self.netcdf = ["%s" % f for f in outdir if f in self._netcdf]
         self.output = ["%s" % f for f in outdir if f.startswith('o-') and YamboFile.has_tag(f,self._tags)]
-        self.run = ["%s" % f for f in outdir if f.startswith('r-')]
-        self.logs = ["%s" % f for f in logdir if f.startswith('l-')]
+        self.run    = ["%s" % f for f in outdir if f.startswith('r-')]
+        self.logs   = ["%s" % f for f in logdir if f.startswith('l-')]
 
         # get data from output file
         self.get_runtime()
@@ -112,6 +112,8 @@ class YamboOut():
 
                 # get tags
                 find_tags = re.findall(self._tagsexp, string)
+                print(string)
+                print(find_tags)
                 tags = [tag.strip() for tag in find_tags[0].split()]
                 f.seek(0)
 
